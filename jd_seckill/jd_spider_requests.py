@@ -10,12 +10,13 @@ import os
 import pickle
 
 from lxml import etree
-from jd_seckill.jd_logger import logger
-from jd_seckill.timer import Timer
-from jd_seckill.config import global_config
 from concurrent.futures import ProcessPoolExecutor
-from jd_seckill.exception import SKException
-from jd_seckill.util import (
+
+from .jd_logger import logger
+from .timer import Timer
+from .config import global_config
+from .exception import SKException
+from .util import (
     parse_json,
     send_wechat,
     wait_some_time,
