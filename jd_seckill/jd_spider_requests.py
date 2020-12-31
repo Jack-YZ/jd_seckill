@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- encoding=utf8 -*-
+
 import random
 import time
 import requests
@@ -7,12 +10,12 @@ import os
 import pickle
 
 from lxml import etree
-from jd_logger import logger
-from timer import Timer
-from config import global_config
+from jd_seckill.jd_logger import logger
+from jd_seckill.timer import Timer
+from jd_seckill.config import global_config
 from concurrent.futures import ProcessPoolExecutor
-from exception import SKException
-from util import (
+from jd_seckill.exception import SKException
+from jd_seckill.util import (
     parse_json,
     send_wechat,
     wait_some_time,
@@ -30,7 +33,7 @@ class SpiderSession:
     Session相关操作
     """
     def __init__(self):
-        self.cookies_dir_path = "./cookies/"
+        self.cookies_dir_path = "cookies/"
         self.user_agent = global_config.getRaw('config', 'DEFAULT_USER_AGENT')
 
         self.session = self._init_session()
@@ -113,7 +116,7 @@ class QrLogin:
             3、校验票据
         :param spider_session:
         """
-        self.qrcode_img_file = 'qr_code.png'
+        self.qrcode_img_file = '../qr_code.png'
 
         self.spider_session = spider_session
         self.session = self.spider_session.get_session()
